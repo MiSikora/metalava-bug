@@ -1,0 +1,46 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.21"
+    }
+}
+
+plugins {
+    id "org.jetbrains.kotlin.jvm" version "1.4.21"
+}
+
+group "io.mehow"
+version "0.0.1"
+
+configurations {
+    metalava
+}
+
+repositories {
+    mavenCentral()
+    google()
+    jcenter()
+}
+
+dependencies {
+    metalava "com.android.tools.metalava:metalava:1.0.0-alpha02"
+}
+
+task metalavaApi(type: JavaExec) {
+    inputs.dir("src/main/java")
+    outputs.file("metalava/api.txt")
+
+    classpath = configurations.metalava
+    main = "com.android.tools.metalava.Driver"
+
+    doFirst {
+        args = [
+                "--source-path", "src/main/java",
+                "--jdk-home", System.properties["java.home"],
+                "--api", "metalava/api.txt",
+        ]
+    }
+}

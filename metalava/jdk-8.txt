@@ -1,0 +1,10 @@
+package  {
+
+  public final class Sample {
+    ctor public Sample();
+    method public java.util.Locale getLocale();
+    property public final java.util.Locale locale;
+  }
+
+}
+

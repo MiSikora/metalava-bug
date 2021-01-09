@@ -1,0 +1,10 @@
+package  {
+
+  public final class Sample {
+    ctor public Sample();
+    method public error.NonExistentClass getLocale();
+    property public final error.NonExistentClass locale;
+  }
+
+}
+
